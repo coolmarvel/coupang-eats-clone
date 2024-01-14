@@ -19,11 +19,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       useFactory: async (configService: ConfigService) => {
         let obj: TypeOrmModuleOptions = {
           type: 'mongodb',
-          host: '',
-          port: 27017,
-          database: '',
-          username: '',
-          password: '',
+          url: configService.get('mongodb.uri'),
           autoLoadEntities: true,
           synchronize: false,
         };
