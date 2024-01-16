@@ -10,16 +10,20 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import jwtConfig from './config/jwt.config';
+import mongoConfig from './config/mongo.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [] }),
+    ConfigModule.forRoot({ isGlobal: true, load: [jwtConfig, mongoConfig] }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
         let obj: TypeOrmModuleOptions = {
           type: 'mongodb',
-          url: configService.get('mongodb.uri'),
+          url: configService.get('mongo.uri'),
+          database: 'coupang-eats',
           autoLoadEntities: true,
           synchronize: false,
         };
@@ -28,6 +32,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         return obj;
       },
     }),
+    // MongooseModule.forRootAsync({
+    //   inject: [ConfigService],
+    //   useFactory: async (configService: ConfigService) => ({ uri: configService.get('mongo.uri'), dbName: 'coupang-eats' }),
+    // }),
     ImageModule,
     MenuModule,
     OrderModule,
