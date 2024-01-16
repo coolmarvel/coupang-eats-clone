@@ -1,4 +1,6 @@
-import { Column, CreateDateColumn, Entity, ObjectId, ObjectIdColumn, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { RefreshToken } from 'src/auth/entity/refresh-token.entity';
+import { Column, CreateDateColumn, Entity, ObjectId, ObjectIdColumn, OneToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import { Role } from '../enum/user.enum';
 
 @Entity()
 export class User {
@@ -14,9 +16,18 @@ export class User {
   @Column({ name: 'email_verified' })
   emailVerified: Date;
 
+  @Column()
+  password: string;
+
+  @Column({ type: 'enum', enum: Role })
+  role: Role = Role.User;
+
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
   @UpdateDateColumn({ name: 'updated_at' })
   updatedAt: Date;
+
+  @OneToOne(() => RefreshToken, (refreshToken) => refreshToken.user)
+  refreshToken: RefreshToken;
 }

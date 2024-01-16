@@ -10,7 +10,6 @@ import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { MongooseModule } from '@nestjs/mongoose';
 import jwtConfig from './config/jwt.config';
 import mongoConfig from './config/mongo.config';
 
@@ -32,10 +31,6 @@ import mongoConfig from './config/mongo.config';
         return obj;
       },
     }),
-    // MongooseModule.forRootAsync({
-    //   inject: [ConfigService],
-    //   useFactory: async (configService: ConfigService) => ({ uri: configService.get('mongo.uri'), dbName: 'coupang-eats' }),
-    // }),
     ImageModule,
     MenuModule,
     OrderModule,
