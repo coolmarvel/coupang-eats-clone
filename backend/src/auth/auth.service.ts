@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import { ObjectId, Repository } from 'typeorm';
 
@@ -37,12 +37,21 @@ export class AuthService {
         }),
       );
 
-      return { id: userEntity.id, accessToken, refreshToken: refreshTokenEntity.id };
+      return { id: userEntity.id, accessToken, refreshToken: refreshTokenEntity.token };
     } catch (e) {
       error = e;
     } finally {
       if (error) throw error;
     }
+  }
+
+  async signin(email: string, password: string) {
+    const user = await this.validateUser(email, password);
+
+    const refreshToken = this.generateRefreshToken(user.id);
+    await this.createRefreshTokenUsingUser(user.id, refreshToken);
+
+    return { accessToken: this.generateAccessToken(user.id), refreshToken };
   }
 
   private generateAccessToken(userId: ObjectId) {
@@ -55,5 +64,24 @@ export class AuthService {
     const payload = { sub: userId, tokenType: 'refresh' };
 
     return this.jwtService.sign(payload, { expiresIn: '30d' });
+  }
+
+  private async validateUser(email: string, password: string): Promise<User> {
+    const user = await this.userService.findOneByEmail(email);
+    if (!user) throw new UnauthorizedException();
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) throw new UnauthorizedException();
+
+    return user;
+  }
+
+  private async createRefreshTokenUsingUser(userId: ObjectId, refreshToken: string) {
+    let refreshTokenEntity = await this.refreshTokenRepository.findOneBy({ user: { id: userId } });
+
+    if (refreshTokenEntity) refreshTokenEntity.token = refreshToken;
+    else refreshTokenEntity = this.refreshTokenRepository.create({ user: { id: userId }, token: refreshToken });
+
+    await this.refreshTokenRepository.save(refreshTokenEntity);
   }
 }
