@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger';
 import { ObjectId } from 'typeorm';
 
 export class SignupResDto {
-  @ApiProperty({ required: true })
-  id: string | ObjectId;
+  @ApiProperty({ required: true, type: String })
+  id: ObjectId;
 
   @ApiProperty({ required: true })
   accessToken: string;

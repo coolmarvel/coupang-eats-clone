@@ -16,8 +16,8 @@ export class UserService {
     }
   }
 
-  async findOne(id: string) {
-    return 'find user';
+  async findOne(id: ObjectId) {
+    return await this.userRepository.findOneBy({ id });
   }
 
   async findOneByEmail(email: string) {
@@ -28,13 +28,5 @@ export class UserService {
     const user = await this.userRepository.findOneBy({ id });
 
     return user.role === Role.Admin;
-  }
-
-  async createSeed() {
-    const result = await this.userRepository.save(
-      this.userRepository.create({ name: 'coolmarvel', email: 'marvel97@naver.com', emailVerified: new Date('2023-01-16') }),
-    );
-
-    return result;
   }
 }

@@ -13,9 +13,9 @@ import { User, UserAfterAuth } from 'src/common/decorator/user.decorator';
 export class AuthController {
   constructor(private authService: AuthService) {}
 
-  @ApiPostResponse(SignupResDto)
   @Public()
   @Post('signup')
+  @ApiPostResponse(SignupResDto)
   async signup(@Body() { email, password, passwordConfirm }: SignupReqDto): Promise<SignupResDto> {
     if (password !== passwordConfirm) throw new BadRequestException();
 
@@ -24,9 +24,9 @@ export class AuthController {
     return { id, accessToken, refreshToken };
   }
 
-  @ApiPostResponse(SigninResDto)
   @Public()
   @Post('signin')
+  @ApiPostResponse(SigninResDto)
   async signin(@Body() { email, password }: SigninReqDto) {
     return this.authService.signin(email, password);
   }
