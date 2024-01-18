@@ -54,6 +54,19 @@ export class AuthService {
     return { accessToken: this.generateAccessToken(user.id), refreshToken };
   }
 
+  async refresh(token: string, userId: ObjectId) {
+    const refreshTokenEntity = await this.refreshTokenRepository.findOneBy({ token });
+    if (!refreshTokenEntity) throw new BadRequestException();
+
+    const accessToken = this.generateAccessToken(userId);
+    const refreshToken = this.generateRefreshToken(userId);
+    refreshTokenEntity.token = refreshToken;
+
+    await this.refreshTokenRepository.save(refreshTokenEntity);
+
+    return { accessToken, refreshToken };
+  }
+
   private generateAccessToken(userId: ObjectId) {
     const payload = { sub: userId, tokenType: 'access' };
 

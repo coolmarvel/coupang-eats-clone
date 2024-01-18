@@ -1,4 +1,5 @@
 import { ExecutionContext, createParamDecorator } from '@nestjs/common';
+import { ObjectId } from 'typeorm';
 
 export const User = createParamDecorator((data: unknown, ctx: ExecutionContext) => {
   const request = ctx.switchToHttp().getRequest();
@@ -7,5 +8,5 @@ export const User = createParamDecorator((data: unknown, ctx: ExecutionContext) 
 });
 
 export interface UserAfterAuth {
-  id: string;
+  id: ObjectId;
 }

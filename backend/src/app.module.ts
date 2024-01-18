@@ -12,10 +12,11 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import jwtConfig from './config/jwt.config';
 import mongoConfig from './config/mongo.config';
+import swaggerConfig from './config/swagger.config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [jwtConfig, mongoConfig] }),
+    ConfigModule.forRoot({ isGlobal: true, load: [jwtConfig, mongoConfig, swaggerConfig] }),
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
