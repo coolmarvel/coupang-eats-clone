@@ -1,5 +1,7 @@
 import { Router } from 'express';
 
+import userRouter from './user';
+
 const router = Router();
 
 router.get('/', (req, res) => {
@@ -10,5 +12,7 @@ router.get('/', (req, res) => {
     res.sendStatus(500);
   }
 });
+
+router.use('/user', userRouter);
 
 export default router;
