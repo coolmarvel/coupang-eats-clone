@@ -623,12 +623,7 @@ import { connectToDB } from '../';
         const like = likeProbability > 0.5;
         const dislike = likeProbability < 0.2;
 
-        return {
-          id: menuId,
-          name: menuMap[menuId.toString()],
-          like,
-          dislike,
-        };
+        return { _id: menuId, name: menuMap[menuId.toString()], like, dislike };
       });
 
       return {
