@@ -1,30 +1,18 @@
 import { User } from '@/db/models/user';
-import { Router } from 'express';
+import express from 'express';
 
-const router = Router();
+const router = express.Router();
 
 router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { id } = req.params;
+    const doc = await User.findById(id);
 
-    const user = await User.findById(id);
-
-    res.status(200).send(user);
+    res.status(200).json(doc);
   } catch (error) {
-    console.error('유저 정보를 가져오던 중 에러 발생', error);
-    res.sendStatus(500);
-  }
-});
+    console.error('유저 정보 가져오던 중 에러 발생', error);
 
-router.post('/signup', async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
-
-    const user = await User.create({ name, email, createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
-
-    res.status(200).send(user);
-  } catch (error) {
-    console.error('회원가입을 하던 중 에러 발생', error);
     res.sendStatus(500);
   }
 });

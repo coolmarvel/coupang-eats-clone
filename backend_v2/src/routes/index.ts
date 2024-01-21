@@ -1,6 +1,7 @@
 import { Router } from 'express';
 
 import userRouter from './user';
+import menuRouter from './menu';
 import orderRouter from './order';
 import storeRouter from './store';
 import imageRouter from './image';
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/user', userRouter);
+router.use('/menu', menuRouter);
 router.use('/order', orderRouter);
 router.use('/store', storeRouter);
 router.use('/image', imageRouter);
