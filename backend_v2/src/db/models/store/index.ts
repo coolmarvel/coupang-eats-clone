@@ -1,5 +1,6 @@
-import { StoreCategory } from '@/constants/storeCategory.ts';
 import { Schema, model } from 'mongoose';
+
+import { StoreCategory } from '@/constants/storeCategory.ts';
 
 const storeSchema = new Schema({
   name: { type: String, required: true },

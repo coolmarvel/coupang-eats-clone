@@ -1,7 +1,7 @@
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 
 const sessionSchema = new Schema({
-  userId: { type: Schema.Types.ObjectId, required: true },
+  userId: { type: Types.ObjectId, required: true },
   expires: { type: Date, required: true },
   sessionToken: { type: String, required: true },
   accessToken: { type: String, required: true },

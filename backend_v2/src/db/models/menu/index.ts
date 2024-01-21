@@ -7,11 +7,18 @@ const menuSchema = new Schema({
   description: String,
   images: [String],
   category: { type: String, required: true },
-  isRecommended: { Boolean },
+  isRecommended: Boolean,
   orderCount: Number,
   likeCount: Number,
   dislikeCount: Number,
-  additionalSelections: [{ title: String, options: [{ title: String, price: Number }], required: Boolean, multiple: Boolean }],
+  additionalSelections: [
+    {
+      title: String,
+      options: [{ title: String, price: Number }],
+      required: Boolean,
+      multiple: Boolean,
+    },
+  ],
 });
 
 export const Menu = model('Menu', menuSchema);
