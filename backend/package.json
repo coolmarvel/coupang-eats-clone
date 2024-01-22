@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc --outDir ./dist/",
-    "dev": "ts-node-dev --project ./tsconfig.json -r tsconfig-paths/register ./src/index.ts",
-    "start": "npm run ts-node ./src/index.ts",
+    "start:dev": "ts-node-dev --project ./tsconfig.json -r tsconfig-paths/register ./src/index.ts",
+    "start:prod": "npm run ts-node ./src/index.ts",
     "ts-node": "ts-node --project ./tsconfig.json",
     "ts-node-dev": "ts-node-dev"
   },
