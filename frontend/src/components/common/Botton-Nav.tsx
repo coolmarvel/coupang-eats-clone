@@ -8,24 +8,15 @@ export const BottonNav = () => {
 
   return (
     <div className="fixed bottom-0 grid h-16 w-screen grid-cols-3 place-items-center border-t border-t-gray-200 bg-white text-center text-sm text-gray-500">
-      <Link
-        href="/"
-        className={`grid place-items-center ${pathname === '/' ? 'font-bold text-black' : ''}`}
-      >
+      <Link href="/" className={`grid place-items-center ${pathname === '/' ? 'font-bold text-black' : ''}`}>
         <BiHome className="text-2xl">홈</BiHome>
       </Link>
 
-      <Link
-        href="/search"
-        className={`grid place-items-center ${pathname === '/search' ? 'font-bold text-black' : ''}`}
-      >
+      <Link href="/search" className={`grid place-items-center ${pathname === '/search' ? 'font-bold text-black' : ''}`}>
         <BiSearch className="text-2xl">검색</BiSearch>
       </Link>
 
-      <Link
-        href="/history"
-        className={`grid place-items-center ${pathname === '/history' ? 'font-bold text-black' : ''}`}
-      >
+      <Link href="/history" className={`grid place-items-center ${pathname === '/history' ? 'font-bold text-black' : ''}`}>
         <BsClipboard2Check className="text-2xl">주문내역</BsClipboard2Check>
       </Link>
     </div>
