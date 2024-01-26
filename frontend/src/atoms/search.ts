@@ -1,5 +1,5 @@
-import { atom } from 'jotai'
+import { atom } from 'jotai';
 
-export const searchQueryAtom = atom<string | undefined>(undefined)
+export const searchQueryAtom = atom<string | undefined>(undefined);
 
-searchQueryAtom.debugLabel = 'searchQueryAtom'
+searchQueryAtom.debugLabel = 'searchQueryAtom';

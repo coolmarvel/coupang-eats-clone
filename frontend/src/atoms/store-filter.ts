@@ -18,8 +18,7 @@ storeFilterAtom.debugLabel = 'storeFilterAtom';
 
 export const storeSortAtom = atom(
   (get) => get(storeFilterAtom).sort,
-  (get, set, newSort: StoreSort) =>
-    set(storeFilterAtom, { ...get(storeFilterAtom), sort: newSort })
+  (get, set, newSort: StoreSort) => set(storeFilterAtom, { ...get(storeFilterAtom), sort: newSort })
 );
 
 export const storeDeliveryPriceAtom = atom(
@@ -27,8 +26,7 @@ export const storeDeliveryPriceAtom = atom(
   (get, set, newMaxDeliveryPrice: DeliveryPrice) =>
     set(storeFilterAtom, {
       ...get(storeFilterAtom),
-      maxDeliveryPrice:
-        newMaxDeliveryPrice === 'ALL' ? undefined : newMaxDeliveryPrice,
+      maxDeliveryPrice: newMaxDeliveryPrice === 'ALL' ? undefined : newMaxDeliveryPrice,
     })
 );
 
