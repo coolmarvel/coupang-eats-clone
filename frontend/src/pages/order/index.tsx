@@ -5,7 +5,7 @@ import { BsCartX } from 'react-icons/bs';
 import { IoClose } from 'react-icons/io5';
 
 import { addMenuToCartAtom, cartAtom, removeMenuFromCartAtom } from '@/atoms/cart';
-import { MenuCounter } from '@/components/common/Menu-Counter';
+import { MenuCounter } from '@/components/common/menu-counter';
 import { CartHeader } from '@/components/header/Cart';
 import { KRW } from '@/libs/currency';
 import { getMenuPrice } from '@/libs/menu';
@@ -44,10 +44,10 @@ export default function Order() {
 
   const submitOrder = async () => {
     mutate(cart, {
-      onSuccess: (data) => {
+      onSuccess: () => {
         router.push('/history');
       },
-      onError(error, variables, context) {
+      onError(error: any, variables: any, context: any) {
         console.error(error, variables, context);
       },
     });

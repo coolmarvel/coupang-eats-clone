@@ -1,12 +1,12 @@
-import { ChangeEvent, useEffect, useState, useTransition } from 'react';
+import { ChangeEvent, SetStateAction, useEffect, useState, useTransition } from 'react';
 
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { BsCamera, BsCheckCircleFill } from 'react-icons/bs';
 import { FaRegThumbsDown, FaRegThumbsUp } from 'react-icons/fa';
 
-import { CloseButton } from '@/components/common/Close-Button';
-import { StarRatingInput } from '@/components/common/Star-Rating-Input';
+import { CloseButton } from '@/components/common/close-button';
+import { StarRatingInput } from '@/components/common/star-rating-input';
 import { useOrder } from '@/queries/order';
 import { useSubmitReview } from '@/queries/review';
 import { useImageUpload } from '@/queries/upload';
@@ -50,7 +50,7 @@ export default function OrderReview({ orderId }: { orderId: string }) {
     console.log(e.target.files);
 
     uploadImage(formData, {
-      onSuccess(data) {
+      onSuccess(data: SetStateAction<string | undefined>) {
         setImage(data);
       },
     });

@@ -1,6 +1,6 @@
 import { FaThumbsDown, FaThumbsUp } from 'react-icons/fa';
 
-import { StarRating } from '@/components/common/Star-Rating';
+import { StarRating } from '@/components/common/star-rating';
 import { getDayDiff } from '@/libs/date';
 import { hideName } from '@/libs/name';
 import { useUserById } from '@/queries/user';

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { Store } from '@/types/store';
 
-import { StarsAndReviews } from '../common/Stars-And-Reviews';
+import { StarsAndReviews } from '../common/stars-and-reviews';
 
 const expandImages = (images?: string[]) => {
   if (!images?.length) return Array(3).fill('/imgs/noimage.svg');

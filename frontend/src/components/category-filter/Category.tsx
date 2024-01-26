@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { ScrollTabs } from '@/components/common/Scroll-Tabs';
+import { ScrollTabs } from '@/components/common/scroll-tabs';
 import { StoreCategory } from '@/constants/store-category';
 
 export const CategoryTabs = ({ category }: { category?: StoreCategory }) => {

@@ -1,8 +1,8 @@
 import { useSession } from 'next-auth/react';
 
 import { CategoryFilters } from '@/components/category-filter';
-import { BottomNav } from '@/components/common/Bottom-Nav';
-import { CartButton } from '@/components/common/Cart-Button';
+import { BottomNav } from '@/components/common/bottom-nav';
+import { CartButton } from '@/components/common/cart-button';
 import { MainSearchBar } from '@/components/search-bar/Main';
 import { StoreList } from '@/components/store-list';
 

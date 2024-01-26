@@ -3,7 +3,7 @@ import { useCategoryStores } from '@/queries/category';
 
 import { useInfiniteScroll } from '../../libs/use-infinite-scroll';
 
-import { StoreListUI } from './Store-List-UI';
+import { StoreListUI } from './store-list-UI';
 
 export const CategoryStoreList = ({ category }: { category?: StoreCategory }) => {
   const { isLoading, data, error, hasNextPage, fetchNextPage, isFetching } = useCategoryStores(category);

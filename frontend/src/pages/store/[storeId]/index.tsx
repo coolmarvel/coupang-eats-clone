@@ -4,7 +4,7 @@ import { useSetAtom } from 'jotai';
 import { GetServerSidePropsContext } from 'next';
 
 import { storeIdAtom } from '@/atoms/store-id';
-import { CartButton } from '@/components/common/Cart-Button';
+import { CartButton } from '@/components/common/cart-button';
 import { StoreDescription } from '@/components/store/store-description';
 import { StoreHeader } from '@/components/store/store-header';
 import { StoreMenus } from '@/components/store/store-menus';

@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react';
 import { searchQueryAtom } from '@/atoms/search';
 import { initialFilter, storeFilterAtom } from '@/atoms/store-filter';
 import { CategoryFilters } from '@/components/category-filter';
-import { CartButton } from '@/components/common/Cart-Button';
+import { CartButton } from '@/components/common/cart-button';
 import { SearchBar } from '@/components/search-bar/Search';
 import { StoreFilters } from '@/components/store-list/Store-Filters';
 import { StoreItem } from '@/components/store-list/Store-Item';

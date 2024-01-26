@@ -2,8 +2,8 @@ import { useAtomValue } from 'jotai';
 
 import { searchQueryAtom } from '@/atoms/search';
 import { BottomNav } from '@/components/common/Bottom-Nav';
-import { OrderHistory } from '@/components/history/Order-History';
-import { HistorySearchBar } from '@/components/search-bar/History';
+import { OrderHistory } from '@/components/history/order-history';
+import { HistorySearchBar } from '@/components/search-bar/history';
 import { useOrderHistory } from '@/queries/history';
 
 export default function History() {

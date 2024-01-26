@@ -1,9 +1,9 @@
 import { GetStaticPropsContext, NextPageContext } from 'next';
 
 import { CategoryTabs } from '@/components/category-filter/Category';
-import { CartButton } from '@/components/common/Cart-Button';
-import { CategoryHeader } from '@/components/header/Category';
-import { CategoryStoreList } from '@/components/store-list/Category-Store-List';
+import { CartButton } from '@/components/common/cart-button';
+import { CategoryHeader } from '@/components/header/category';
+import { CategoryStoreList } from '@/components/store-list/category-store-list';
 import { StoreCategory } from '@/constants/store-category';
 
 export default function Category({ category }: { category: string }) {

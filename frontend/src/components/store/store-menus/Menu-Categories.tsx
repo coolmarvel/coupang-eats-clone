@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 import { currentCategoryAtom } from '@/atoms/current-category';
 import { storeIdAtom } from '@/atoms/store-id';
-import { ScrollTabs } from '@/components/common/Scroll-Tabs';
+import { ScrollTabs } from '@/components/common/scroll-tabs';
 import { getUniqueCategories } from '@/libs/get-unique-categories';
 import { useStoreMenus } from '@/queries/menus';
 

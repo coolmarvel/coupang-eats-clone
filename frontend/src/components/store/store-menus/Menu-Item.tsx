@@ -5,7 +5,7 @@ import { BiCartAdd } from 'react-icons/bi';
 
 import { addMenuToCartAtom, cartAtom, removeMenuFromCartAtom } from '@/atoms/cart';
 import { storeIdAtom } from '@/atoms/store-id';
-import { MenuCounter } from '@/components/common/Menu-Counter';
+import { MenuCounter } from '@/components/common/menu-counter';
 import { KRW } from '@/libs/currency';
 import { useMenuInCart } from '@/libs/use-menu-in-cart';
 import { Menu } from '@/types/menu';

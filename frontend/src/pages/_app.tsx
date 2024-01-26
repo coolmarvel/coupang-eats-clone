@@ -9,7 +9,7 @@ import { SessionProvider } from 'next-auth/react';
 import { CookiesProvider } from 'react-cookie';
 
 import '@/styles/globals.css';
-import { AuthRedirect } from '@/components/common/Auth-Redirect';
+import { AuthRedirect } from '@/components/common/auth-redirect';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
   const [queryClient] = useState(

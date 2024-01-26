@@ -3,9 +3,9 @@ import Link from 'next/link';
 import { BiChevronRight } from 'react-icons/bi';
 
 import { storeIdAtom } from '@/atoms/store-id';
-import { BackButton } from '@/components/common/Back-Button';
-import { Carousel } from '@/components/common/Carousel';
-import { StarsAndReviews } from '@/components/common/Stars-And-Reviews';
+import { BackButton } from '@/components/common/back-button';
+import { Carousel } from '@/components/common/carousel';
+import { StarsAndReviews } from '@/components/common/stars-and-reviews';
 import { useStore } from '@/queries/store';
 
 export const StoreHeader = () => {

@@ -4,8 +4,8 @@ import { useSetAtom } from 'jotai';
 import { GetServerSideProps } from 'next';
 
 import { menuIdAtom } from '@/atoms/menu-id';
-import { BackButton } from '@/components/common/Back-Button';
-import { Carousel } from '@/components/common/Carousel';
+import { BackButton } from '@/components/common/back-button';
+import { Carousel } from '@/components/common/carousel';
 import { MenuOrder } from '@/components/menu/Menu-Order';
 import { MenuTitle } from '@/components/menu/Menu-Title';
 import { useMenu } from '@/queries/menu';

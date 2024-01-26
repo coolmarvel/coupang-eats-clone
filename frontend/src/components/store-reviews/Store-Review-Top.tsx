@@ -1,5 +1,5 @@
-import { StarRating } from '@/components//common/Star-Rating';
-import { BackButton } from '@/components/common/Back-Button';
+import { StarRating } from '@/components//common/star-rating';
+import { BackButton } from '@/components/common/back-button';
 import { useStore } from '@/queries/store';
 
 export function StoreReviewTop({ storeId }: { storeId: string }) {

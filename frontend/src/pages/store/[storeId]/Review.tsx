@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { CartButton } from '@/components/common/Cart-Button';
+import { CartButton } from '@/components/common/cart-button';
 import { StoreReviewList } from '@/components/store-reviews/Store-Review-List';
 import { StoreReviewTop } from '@/components/store-reviews/Store-Review-Top';
 

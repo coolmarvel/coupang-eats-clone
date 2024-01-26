@@ -3,7 +3,7 @@ import { PropsWithChildren } from 'react';
 import Link from 'next/link';
 import { FaSearch } from 'react-icons/fa';
 
-import { BackButton } from '../common/Back-Button';
+import { BackButton } from '../common/back-button';
 
 export const CategoryHeader = ({ children }: PropsWithChildren) => {
   return (
