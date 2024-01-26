@@ -2,6 +2,7 @@ import { MongoDBAdapter } from '@next-auth/mongodb-adapter';
 import NextAuth, { NextAuthOptions } from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import mongoClient from '@/libs/mongo-client';
+
 import dotenv from 'dotenv';
 dotenv.config();
 
