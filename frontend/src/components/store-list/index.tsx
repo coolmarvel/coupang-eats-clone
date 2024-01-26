@@ -1,7 +1,7 @@
 import { useInfiniteScroll } from '@/libs/use-infinite-scroll';
 import { useStores } from '@/queries/stores';
 
-import { StoreListUI } from './StoreListUI';
+import { StoreListUI } from './Store-List-UI';
 
 export const StoreList = () => {
   const { isLoading, data, error, hasNextPage, fetchNextPage, isFetching } = useStores();

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { BiHome, BiSearch } from 'react-icons/bi';
 import { BsClipboard2Check } from 'react-icons/bs';
 
-export const BottonNav = () => {
+export const BottomNav = () => {
   const { pathname } = useRouter();
 
   return (

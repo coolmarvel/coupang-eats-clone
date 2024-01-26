@@ -1,10 +1,12 @@
-import { API_PATH } from '@/constants/api-config';
-import { OrderHistory } from '@/types/order';
 import { useQuery } from '@tanstack/react-query';
 import { useSession } from 'next-auth/react';
 
-export const useOrderHisotry = () => {
+import { API_PATH } from '@/constants/api-config';
+import { OrderHistory } from '@/types/order';
+
+export const useOrderHistory = () => {
   const { data: session } = useSession();
+
   const { user } = session ?? {};
 
   return useQuery<OrderHistory[]>({
@@ -12,9 +14,7 @@ export const useOrderHisotry = () => {
     queryFn: async () => {
       if (!user?.email) return null;
 
-      const response = await fetch(
-        `${API_PATH}/order/history?email=${user.email}`
-      );
+      const response = await fetch(`${API_PATH}/order/history?email=${user.email}`);
 
       return response.json();
     },
