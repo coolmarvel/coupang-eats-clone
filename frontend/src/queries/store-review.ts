@@ -1,22 +1,15 @@
+import { useInfiniteQuery } from '@tanstack/react-query';
+
 import { API_PATH } from '@/constants/api-config';
 import { ReviewSort } from '@/constants/review';
 import { removeEmpty } from '@/libs/object-utils';
 import { Review } from '@/types/review';
-import { useInfiniteQuery } from '@tanstack/react-query';
 
 const REVIEW_PER_PAGE = 10;
 
-export const useStoreReview = ({
-  storeId,
-  photo,
-  sort = ReviewSort.RECENT,
-}: {
-  storeId?: string;
-  photo: boolean;
-  sort: ReviewSort;
-}) => {
+export const useStoreReviews = ({ storeId, photo, sort = ReviewSort.RECENT }: { storeId?: string; photo: boolean; sort: ReviewSort }) => {
   return useInfiniteQuery<Review[]>({
-    queryKey: ['STORE_REVIEW', { storeId, photo, sort }],
+    queryKey: ['STORE_REVIEWS', { storeId, photo, sort }],
     queryFn: async ({ pageParam = 1 }) => {
       if (!storeId) return null;
 
