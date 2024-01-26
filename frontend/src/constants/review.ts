@@ -6,11 +6,10 @@ export const ReviewSort = {
 
 export type ReviewSort = (typeof ReviewSort)[keyof typeof ReviewSort];
 
-export const ReviewSortIndex = {
+export const ReviewSortText = {
   [ReviewSort.RECENT]: '최신순',
-  [ReviewSort.RATING_ASC]: '별점 낮은순',
   [ReviewSort.RATING_DESC]: '별점 높은순',
-};
+  [ReviewSort.RATING_ASC]: '별점 낮은순',
+} as const;
 
-export type ReviewSortIndex =
-  (typeof ReviewSortIndex)[keyof typeof ReviewSortIndex];
+export type ReviewSortText = (typeof ReviewSortText)[keyof typeof ReviewSortText];
