@@ -1,29 +1,43 @@
-import { AuthRedirect } from '@/components/common/Auth-Redirect';
-import { QueryClient } from '@tanstack/react-query';
-import { SessionProvider } from 'next-auth/react';
-import type { AppProps } from 'next/app';
 import { useState } from 'react';
 
+import { Hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { Provider as JotaiProvider } from 'jotai';
+import { DevTools as JotaiDevTools } from 'jotai-devtools';
+import type { AppProps } from 'next/app';
+import { SessionProvider } from 'next-auth/react';
+import { CookiesProvider } from 'react-cookie';
+
 import '@/styles/globals.css';
+import { AuthRedirect } from '@/components/common/Auth-Redirect';
 
 export default function App({ Component, pageProps: { session, ...pageProps } }: AppProps) {
-  // const [queryClient] = useState(
-  //   new QueryClient({
-  //     defaultOptions: {
-  //       queries: {
-  //         staleTime: 1000 * 60 * 5, // 5 minutes
-  //         cacheTime: Infinity,
-  //         refetchOnWindowFocus: false,
-  //         refetchOnMount: false,
-  //       },
-  //     },
-  //   })
-  // );
-
+  const [queryClient] = useState(
+    new QueryClient({
+      defaultOptions: {
+        queries: {
+          staleTime: 1000 * 60 * 5, // 5 mins
+          cacheTime: Infinity,
+          refetchOnWindowFocus: false,
+          refetchOnMount: false,
+        },
+      },
+    })
+  );
   return (
     <SessionProvider session={session}>
-      <AuthRedirect />
-      <Component {...pageProps} />
+      <CookiesProvider>
+        <QueryClientProvider client={queryClient}>
+          <Hydrate state={pageProps.dehydratedState}>
+            <JotaiProvider>
+              <AuthRedirect />
+              {/* <JotaiDevTools /> */}
+              <Component {...pageProps} />
+            </JotaiProvider>
+          </Hydrate>
+          <ReactQueryDevtools initialIsOpen={false} />
+        </QueryClientProvider>
+      </CookiesProvider>
     </SessionProvider>
   );
 }
